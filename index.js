@@ -22,7 +22,7 @@ const respond = (res, data) => {
 }
 
 const manifest = {
-    "id": "org.stremio.jackett",
+    "id": "com.stremio.jackett",
     "version": version,
     "name": "Stremio Jackett Addon",
     "description": "Stremio Add-on to get torrent results from Jackett",
@@ -104,7 +104,7 @@ async function streamFromMagnet(tor, uri, type) {
         }
     }   
 
-    return states.createDownloader({ type: type, imdbId: id, title: title, year: year, results: filtered, config, isCollectionPart: true })
+    return void states.createDownloader({ type: type, imdbId: id, title: title, year: year, results: filtered, config, isCollectionPart: true })
 }
 
 
@@ -129,15 +129,14 @@ async function respondStreams(res, req) {
     .sort((a, b) => b.seeders - a.seeders)
     .slice(0, (Math.max(config.maximumResults || 20, 20)))
 
-    const streams = []
-    
-    for (const task of filtered) {
-        if (task?.magneturl || task?.link) {
-            const url = await helper.followRedirect(task.magneturl || task.link)
-            const stream = await streamFromMagnet(task, url, type)
-            if (stream) streams.push(stream)
-        }
-    }
+    const streams = (await Promise.all(
+        filtered
+            .filter(task => task?.magneturl || task?.link)
+            .map(async task => {
+                const url = await helper.followRedirect(task.magneturl || task.link)
+                return streamFromMagnet(task, url, type)
+            })
+    )).filter(Boolean)
 
     if (!res.headersSent) respond(res, { streams })
     //MovieDownloader Hooked if TMDB key exists - and correct

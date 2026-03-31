@@ -18,8 +18,8 @@ const defaultConfig = {
     "targetRes": 1080,
     "candidates": 3,
     "downloadAfter": 0.1,
-    "tmdbApiKey": '<tmdb-api-key>',
-    "jackettApiKey": '<jackett-api-key>',
+    "tmdbApiKey": '589ff144d41b0b9bc3c349f148a82d1c',
+    "jackettApiKey":  'b922yowc0wydj8p78q1oiel5jrd2fqfw',
     "jackett": {
         "host": "http://127.0.0.1:9117/",
         "readTimeout": 10000,

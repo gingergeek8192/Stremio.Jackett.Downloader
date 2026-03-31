@@ -1,6 +1,6 @@
 {
   "name": "stremio-jackett-downloader-addon",
-  "version": "1",
+  "version": "1.0.6",
   "type": "module",
   "description": "Stremio Add-on to stream and download torrents from Jackett",
   "main": "index.js",
