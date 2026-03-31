@@ -22,11 +22,11 @@ const respond = (res, data) => {
 }
 
 const manifest = {
-    "id": "com.stremio.jackett",
+    "id": "com.stremio.downloader",
     "version": version,
-    "name": "Stremio Jackett Addon",
-    "description": "Stremio Add-on to get torrent results from Jackett",
-    "icon": "https://static1.squarespace.com/static/55c17e7ae4b08ccd27be814e/t/599b81c32994ca8ff6c1cd37/1508813048508/Jackett-logo-2.jpg",
+    "name": "Stremio Downloader Addon",
+    "description": "Stremio Add-on download and add to JellyFin library",
+    "icon": "https://github.com/gingergeek8192/Stremio.Jackett.Downloader/blob/main/icon.png?raw=true",
     "resources": ["stream"],
     "types": ["movie", "series"],
     "idPrefixes": ["tt"],
