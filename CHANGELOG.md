@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+- `ui.js` — web UI served on port 4242; live log output streamed to browser
+- Web UI section added to README and TODO
+
 ### Changed
 - Replaced `needle` with `axios` across `index.js`, `jackett.js` and `helpers.js` — `needle` removed from dependencies
 - `jackett.js` — `search` converted from callback-based to async, returns results directly via `Promise.all` across all indexers; both streaming and completion callbacks removed

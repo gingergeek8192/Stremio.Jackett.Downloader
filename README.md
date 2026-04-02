@@ -15,6 +15,7 @@ Most Jackett add-ons stop at surfacing torrent links in Stremio. This one goes f
 - **Franchise collection download** — watch one film in a series and the rest of the collection queues up automatically.
 - **Jellyfin-ready library** — completed downloads are renamed, moved, and decorated with metadata (NFO, poster, backdrop, logo) in the exact structure Jellyfin expects. No manual sorting.
 - **Smart candidate selection** — filters by your preferred resolution, sorts by seeds, and falls back through candidates automatically if one stalls.
+- **Web UI** — a local dashboard on port 4242 for monitoring and controlling downloads.
 
 
 ## Auto-Download
@@ -42,6 +43,20 @@ On download completion, files are automatically:
 - Decorated with an NFO metadata file, poster, backdrop, and logo fetched from TMDB
 
 Point Jellyfin at your `savePath` and your library updates itself.
+
+
+## Web UI
+
+A local web dashboard is available at `http://127.0.0.1:4242` once the add-on is running.
+
+Current features:
+- Live log output from the add-on
+
+Planned features:
+- Download progress — real-time speed, percentage, and ETA per torrent
+- Pause / resume active downloads
+- Remove a download from the queue or cancel an active one
+- Browse the download queue
 
 
 ## Planned Features

@@ -31,6 +31,18 @@ Implemented in `movieDownloader.js`:
 - Reactive queue via `states._next_movie` edge trigger in `reactive.js`
 
 
+## Web UI
+
+Served by `ui.js` on port 4242:
+- Live log stream from the add-on
+
+Planned additions:
+- Download progress (speed, percentage, ETA per torrent)
+- Pause / resume active downloads
+- Remove / cancel downloads
+- Browse and manage the download queue
+
+
 ## Bundled Jackett (first-run download)
 
 Scaffolded in `jackettManager.js` — not yet wired up:
