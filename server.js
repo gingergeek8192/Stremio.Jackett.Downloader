@@ -10,7 +10,7 @@ import jackettApi from './jackett.js'
 import helper from './helpers.js'
 import config from './config.js'
 import { collections } from './collections.js'
-
+import { UI } from './ui.js'
 
 const exprs = {
 
@@ -105,7 +105,7 @@ const exprs = {
                 "catalogs": []
             })
         })
-
+        UI.start()
         this.server.get('/:jackettKey/stream/:type/:id.json', (req, res) => {
             if (!req.params.id) return this.respondStremHeaders(res, { streams: [] })
             if (config.responseTimeout) setTimeout(() => { if (!res.headersSent) this.respondStremHeaders(res, { streams: [] }) }, config.responseTimeout)
@@ -113,13 +113,12 @@ const exprs = {
                 .catch(() => this.respondStremHeaders(res, { streams: [] }))
         })
         this.server.listen(config.addonPort)
-        console.log('Local (this machine) Add-on URL: http://127.0.0.1:'+config.addonPort+'/'+config.jackettApiKey+'/manifest.json')
         const localIp = Object.values(os.networkInterfaces()).flat().find(i => i.family === 'IPv4' && !i.internal)?.address ?? 'localhost'
-        console.log('Remote (other devices) Add-on URL: http://'+localIp+':'+config.addonPort+'/'+config.jackettApiKey+'/manifest.json')
-        console.log(' ')
-        console.log('NOTE FOR REMOTE USE:')
-        console.log('         macOS: Stremio-App is Unrestricted. Just Works')
-        console.log('         Windows: Use Stremio-Web on Chrome Allow Insecure Content for Stremio.')
+        UI.queueMessage({ type: 'success', text: 'Local URL: http://127.0.0.1:'+config.addonPort+'/'+config.jackettApiKey+'/manifest.json' })
+        UI.queueMessage({ type: 'success', text: 'Remote URL: http://'+localIp+':'+config.addonPort+'/'+config.jackettApiKey+'/manifest.json' })
+        UI.queueMessage({ type: 'info', text: 'macOS: Stremio-App is Unrestricted. Just Works' })
+        UI.queueMessage({ type: 'warn', text: 'Windows: Use Stremio-Web on Chrome — Allow Insecure Content for Stremio.' })
+        console.log('Web Page URL: http://127.0.0.1:4242')
     },
 
 
