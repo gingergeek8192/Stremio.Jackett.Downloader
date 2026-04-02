@@ -33,7 +33,9 @@ let states = {
 
 const client = new WebTorrent({ maxConns: 55 })
 client.on('error', err => console.error('WebTorrent error:', err.message))
-process.on('SIGINT', () => client.destroy(() => process.exit()))
+const shutdown = () => client.destroy(() => process.exit())
+process.on('SIGINT', shutdown)
+process.on('SIGTERM', shutdown)
 
 class MoviesDownloader {
     constructor(data) {

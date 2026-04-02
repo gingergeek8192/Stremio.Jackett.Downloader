@@ -4,6 +4,7 @@ const UI = {
     app: express(),
     clients: [],
     history: [],
+    uiPort: 4242,
 
     queueMessage({ type = 'info', text }) {
         const msg = JSON.stringify({ type, text, time: new Date().toLocaleTimeString() })
@@ -11,7 +12,8 @@ const UI = {
         this.clients.forEach(c => c.write(`data: ${msg}\n\n`))
     },
 
-    start() {
+    start(uiPort) {
+        this.uiPort = uiPort
         this.app.get('/', (req, res) => res.send(this._page()))
 
         this.app.get('/log', (req, res) => {
@@ -23,7 +25,7 @@ const UI = {
             req.on('close', () => { this.clients = this.clients.filter(c => c !== res) })
         })
 
-        this.app.listen(4242)
+        this.app.listen(this.uiPort)
     },
 
     _page() {
@@ -57,7 +59,7 @@ const UI = {
     <span id="status">connecting...</span>
 </header>
 <div id="log"></div>
-<footer>SSE live feed · port 4242</footer>
+<footer>SSE live feed · port ${this.uiPort}</footer>
 <script>
     const log = document.getElementById('log')
     const status = document.getElementById('status')
@@ -79,7 +81,5 @@ const UI = {
 </html>`
     }
 }
-
-
 
 export { UI }

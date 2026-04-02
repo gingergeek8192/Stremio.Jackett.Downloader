@@ -7,7 +7,8 @@ import { states } from './movieDownloader.js'
 const defaultConfig = {
     "autoLaunch": false,
     "responseTimeout": 11000,
-    "addonPort": 7000,
+    "addonPort": 7001,
+    "uiPort": 4242,
     "minimumSeeds": 3,
     "maximumResults": 30,
     "remote": true,

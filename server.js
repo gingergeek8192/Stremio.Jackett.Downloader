@@ -89,7 +89,7 @@ const exprs = {
     },
 
     async start() {
-        config.addonPort = await getPort({ port: config.addonPort })
+        const addonPort = await getPort({ port: config.addonPort })
 
         this.server.get('/:jackettKey/manifest.json', (req, res) => {
 
@@ -105,20 +105,21 @@ const exprs = {
                 "catalogs": []
             })
         })
-        UI.start()
+        const uiPort = await getPort({ port: config.uiPort })
+        UI.start(uiPort)
         this.server.get('/:jackettKey/stream/:type/:id.json', (req, res) => {
             if (!req.params.id) return this.respondStremHeaders(res, { streams: [] })
             if (config.responseTimeout) setTimeout(() => { if (!res.headersSent) this.respondStremHeaders(res, { streams: [] }) }, config.responseTimeout)
             this.respondStreams(res, req)
                 .catch(() => this.respondStremHeaders(res, { streams: [] }))
         })
-        this.server.listen(config.addonPort)
+        this.server.listen(addonPort)
         const localIp = Object.values(os.networkInterfaces()).flat().find(i => i.family === 'IPv4' && !i.internal)?.address ?? 'localhost'
-        UI.queueMessage({ type: 'success', text: 'Local URL: http://127.0.0.1:'+config.addonPort+'/'+config.jackettApiKey+'/manifest.json' })
-        UI.queueMessage({ type: 'success', text: 'Remote URL: http://'+localIp+':'+config.addonPort+'/'+config.jackettApiKey+'/manifest.json' })
+        UI.queueMessage({ type: 'success', text: 'Local URL: http://127.0.0.1:'+addonPort+'/'+config.jackettApiKey+'/manifest.json' })
+        UI.queueMessage({ type: 'success', text: 'Remote URL: http://'+localIp+':'+addonPort+'/'+config.jackettApiKey+'/manifest.json' })
         UI.queueMessage({ type: 'info', text: 'macOS: Stremio-App is Unrestricted. Just Works' })
         UI.queueMessage({ type: 'warn', text: 'Windows: Use Stremio-Web on Chrome — Allow Insecure Content for Stremio.' })
-        console.log('Web Page URL: http://127.0.0.1:4242')
+        console.log(`Web Page URL: http://127.0.0.1:${uiPort}`)
     },
 
 
