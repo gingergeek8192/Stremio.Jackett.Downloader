@@ -35,6 +35,7 @@ class LibraryManager {
     if (found.length > 1) target = await this.biggest(found)
     else if (found.length > 0) target = found[0]
     else if (await this._fileExist(this.source)) return await this.rm(this.source)
+    if (target === undefined) return await this.rm(this.source)
     await this.cpFile(target, this._filePath(this.folder, rename)) // cpfile has catch err, to avoid complex file checking logic 
     await this.rm(this.source)
   }

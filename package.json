@@ -3,11 +3,9 @@
   "version": "1.0.6",
   "type": "module",
   "description": "Stremio Add-on to stream and download torrents from Jackett",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "node build.mjs",
-    "build:clean": "node build.mjs --clean"
+    "start": "node server.js"
   },
   "license": "MIT",
   "devDependencies": {

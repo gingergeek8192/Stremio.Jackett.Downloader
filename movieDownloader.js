@@ -58,10 +58,10 @@ class MoviesDownloader {
     async reset(interval, torrent, done=false) {
         if (interval) clearInterval(interval)
         this.downloading = false
-        this.progress = 0
+
         await client.remove(torrent)
         client.throttleDownload(-1)
-        if (done) {
+        if (done && this.progress > 99) {
             states.currentCandidates = []
             if (states.idle())
                  await new LibraryManager(
@@ -76,6 +76,7 @@ class MoviesDownloader {
                 ).manager()
             if (states.idle() && states.waiting()) states._next_movie = true // Edge trigger
         }
+        this.progress = 0
     }
 
     // Mitigate ENOBUFS 
