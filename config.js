@@ -20,13 +20,53 @@ const defaultConfig = {
     "candidates": 3,
     "downloadAfter": 0.1,
     "tmdbApiKey": '589ff144d41b0b9bc3c349f148a82d1c',
-    "jackettApiKey":  'b922yowc0wydj8p78q1oiel5jrd2fqfw',
+    "jackettApiKey":  'stremio-add-on-downloader',
     "jackett": {
         "host": "http://127.0.0.1:9117/",
         "readTimeout": 10000,
         "openTimeout": 10000
     }
 }
+
+const JackettConfig = {
+
+    indexers: `./indexers`,
+
+    ServerSettings: {
+        "Port": 9117,
+        "LocalBindAddress": "127.0.0.1",
+        "AllowExternal": true,
+        "AllowCORS": true,
+        "APIKey": "stremio-add-on-downloader",
+        "AdminPassword": "stremio-add-on-downloader",
+        "InstanceId": "gtg5fvcedggd9l2aejhetvpa6wt7p7k8za39xvszpfojrr425hper7fsw6zh42yp",
+        "BlackholeDir": "C:\\Downloads",
+        "UpdateDisabled": false,
+        "UpdatePrerelease": false,
+        "BasePathOverride": "",
+        "BaseUrlOverride": "",
+        "CacheEnabled": true,
+        "CacheTtl": 2100,
+        "CacheMaxResultsPerIndexer": 1000,
+        "FlareSolverrUrl": "",
+        "FlareSolverrMaxTimeout": 55000,
+        "OmdbApiKey": "",
+        "OmdbApiUrl": "",
+        "ProxyType": -1,
+        "ProxyUrl": "",
+        "ProxyPort": null,
+        "ProxyUsername": "",
+        "ProxyPassword": "",
+        "ProxyIsAnonymous": true
+    },
+
+    async jackettWriteout() {
+        // stub to write out the indexer dir and ServerConfig.json to Jackett  
+
+    }
+
+}
+
 
 function readConfig() {
     const configFilePath = path.join(path.dirname(fileURLToPath(import.meta.url)), 'config.json')

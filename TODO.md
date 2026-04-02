@@ -31,6 +31,12 @@ Implemented in `movieDownloader.js`:
 - Reactive queue via `states._next_movie` edge trigger in `reactive.js`
 
 
+## Bundle Jackett 
+
+// "C:\ProgramData\Jackett\Indexers"
+// "C:\ProgramData\Jackett\ServerConfig.json"
+
+
 ## Web UI
 
 Served by `ui.js` on port 4242:

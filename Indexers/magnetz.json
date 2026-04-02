@@ -1,0 +1,26 @@
+[
+  {
+    "id": "sitelink",
+    "type": "inputstring",
+    "name": "Site Link",
+    "value": "https://magnetz.eu/"
+  },
+  {
+    "id": "cookieheader",
+    "type": "hiddendata",
+    "name": "CookieHeader",
+    "value": "XSRF-TOKEN=eyJpdiI6InRxckU1dFFRZ0FmV0ZBdk9OcExMaUE9PSIsInZhbHVlIjoid0dqQVF0UkZ3amlRQ0MzQytVc2tNVTBzRzVYbGhYZ2JmSTNsWC82MWpkNEJ1RnM2b3dBVXlYWDduRGhwakVVaFN3NUQxMVNoYytDeUt2MllWQkxjcUVDYWFUeWRFQVExNVhlQ3dEM3djOWlDVWhQZ3Vka3pPTUhDNU0zeGN0OEQiLCJtYWMiOiIyNGU2Y2Y1ODU1YWUxYjU5OWUwMjJkOGZkM2ZhODhjOGFhMDIyNjNiMWM3MzY4YzBlNjgzZDMzMWU1YTliNjE5IiwidGFnIjoiIn0%3D; magnetz-session=eyJpdiI6IjBJRnp6M3RJOVg5aHY4ZFIvQ3ExMVE9PSIsInZhbHVlIjoiNURQSzB3eW9heXBTVW40eSthVjNZRFdJUmxrbWxRVTZwSnJCYkR5Snh3R3VLVXo4R0hXWXhtZi9LSDN2WXl6dEhGQzRiODBUaWszZ0wvcGlCMjNNTE9DN29XN2hVZFQ4ZlVmZ0VvRE4wOWZleVN2cmt2YjhoclBZTVZVUjBSb3QiLCJtYWMiOiI3OWY3NjNhOGRiNTM0ODQ3Mzk4ODg0OTc3MWU1ODNkYTc4Njk0YWJlYjhiYzg2YWFiODRiNTM1YzhiNjMwZGM3IiwidGFnIjoiIn0%3D"
+  },
+  {
+    "id": "lasterror",
+    "type": "hiddendata",
+    "name": "LastError",
+    "value": null
+  },
+  {
+    "id": "tags",
+    "type": "inputtags",
+    "name": "Tags",
+    "value": ""
+  }
+]

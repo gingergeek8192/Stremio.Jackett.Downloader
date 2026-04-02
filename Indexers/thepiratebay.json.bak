@@ -1,0 +1,38 @@
+[
+  {
+    "id": "sitelink",
+    "type": "inputstring",
+    "name": "Site Link",
+    "value": "https://tpb-google.pages.dev/"
+  },
+  {
+    "id": "cookieheader",
+    "type": "hiddendata",
+    "name": "CookieHeader",
+    "value": null
+  },
+  {
+    "id": "lasterror",
+    "type": "hiddendata",
+    "name": "LastError",
+    "value": null
+  },
+  {
+    "id": "apiurl",
+    "type": "inputstring",
+    "name": "API URL",
+    "value": "apibay.org"
+  },
+  {
+    "id": "filterbyuploader",
+    "type": "inputstring",
+    "name": "Filter by Uploader",
+    "value": ""
+  },
+  {
+    "id": "tags",
+    "type": "inputtags",
+    "name": "Tags",
+    "value": ""
+  }
+]
